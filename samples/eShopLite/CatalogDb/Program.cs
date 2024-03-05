@@ -3,7 +3,8 @@ using CatalogDb;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
-builder.AddNpgsqlDbContext<CatalogDbContext>("catalogdb");
+//builder.AddNpgsqlDbContext<CatalogDbContext>("catalogdb");
+builder.AddMySqlDataSource("catalogdb");//AddMySqlDataSource("catalogdb");
 
 builder.Services.AddOpenTelemetry()
     .WithTracing(tracing => tracing.AddSource(CatalogDbInitializer.ActivitySourceName));

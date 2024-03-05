@@ -1,10 +1,9 @@
-using CatalogDb;
 using CatalogService;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
-builder.AddNpgsqlDbContext<CatalogDbContext>("catalogdb");
+builder.AddMySqlDataSource("catalogdb");
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddProblemDetails();

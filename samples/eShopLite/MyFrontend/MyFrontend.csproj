@@ -40,7 +40,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Protobuf Include="..\BasketService\Protos\basket.proto" GrpcServices="Client" Link="BasketService\Protos\basket.proto" />
+
+    <!--注意这里 GrpcServices是Client。客户端的意思，调用方-->
+
+    <Protobuf Include="Protos\basket.proto" GrpcServices="Client" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <None Update="Protos\basket.proto">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

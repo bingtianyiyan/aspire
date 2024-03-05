@@ -1,6 +1,7 @@
-using GrpcBasket;
+//using GrpcBasket;
 using MyFrontend.Components;
 using MyFrontend.Services;
+using static GrpcBasket.Basket;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +12,7 @@ builder.Services.AddHttpForwarderWithServiceDiscovery();
 builder.Services.AddHttpClient<CatalogServiceClient>(c => c.BaseAddress = new("http://catalogservice"));
 
 builder.Services.AddSingleton<BasketServiceClient>()
-                .AddGrpcClient<Basket.BasketClient>(o => o.Address = new("http://basketservice"));
+                .AddGrpcClient<BasketClient>(o => o.Address = new("http://basketservice"));
 
 builder.Services.AddRazorComponents();
 

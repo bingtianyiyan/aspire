@@ -43,7 +43,7 @@ public class CatalogDbContext(DbContextOptions<CatalogDbContext> options) : DbCo
         builder.HasKey(ci => ci.Id);
 
         builder.Property(ci => ci.Id)
-            .UseHiLo("catalog_type_hilo")
+            //.UseHiLo("catalog_type_hilo")
             .IsRequired();
 
         builder.Property(cb => cb.Type)
@@ -56,7 +56,7 @@ public class CatalogDbContext(DbContextOptions<CatalogDbContext> options) : DbCo
         builder.ToTable("Catalog");
 
         builder.Property(ci => ci.Id)
-            .UseHiLo("catalog_hilo")
+            //.UseHiLo("catalog_hilo")
             .IsRequired();
 
         builder.Property(ci => ci.Name)
@@ -86,7 +86,7 @@ public class CatalogDbContext(DbContextOptions<CatalogDbContext> options) : DbCo
         builder.HasKey(ci => ci.Id);
 
         builder.Property(ci => ci.Id)
-            .UseHiLo("catalog_brand_hilo")
+            //.UseHiLo("catalog_brand_hilo")
             .IsRequired();
 
         builder.Property(cb => cb.Brand)

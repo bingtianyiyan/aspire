@@ -10,10 +10,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Protobuf Include="**/*.proto" GrpcServices="Server">
+    <Protobuf Include="**/*.proto" OutputDir="%(RelativePath)" CompileOutputs="false" GrpcServices="Server">
       <ProtoRoot>Otlp</ProtoRoot>
     </Protobuf>
   </ItemGroup>
+
+  <!--<ItemGroup>
+    <Protobuf Remove="Otlp\logs_service.proto" />
+    <Protobuf Remove="Otlp\opentelemetry\metrics_service.proto" />
+    <Protobuf Remove="Otlp\opentelemetry\trace_service.proto" />
+  </ItemGroup>-->
 
   <ItemGroup>
     <!-- Required because we're using the Razor SDK not the Web SDK -->
@@ -21,7 +27,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Google.Protobuf" />
+    <PackageReference Include="Google.Protobuf.Tools" />
     <PackageReference Include="Grpc.AspNetCore" />
+    <PackageReference Include="Grpc.Tools">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Humanizer.Core" />
     <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components" />
     <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons" />
@@ -29,6 +41,33 @@
 
   <ItemGroup>
     <InternalsVisibleTo Include="Aspire.Dashboard.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Otlp\opentelemetry\proto\collector\logs\v1\logs_service.proto">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Otlp\opentelemetry\proto\collector\metrics\v1\metrics_service.proto">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Otlp\opentelemetry\proto\collector\trace\v1\trace_service.proto">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Otlp\opentelemetry\proto\common\v1\common.proto">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Otlp\opentelemetry\proto\logs\v1\logs.proto">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Otlp\opentelemetry\proto\metrics\v1\metrics.proto">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Otlp\opentelemetry\proto\resource\v1\resource.proto">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Otlp\opentelemetry\proto\trace\v1\trace.proto">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
